@@ -1,0 +1,15 @@
+plugins {
+	id 'fabric-loom' version '0.2.2-SNAPSHOT'
+}
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
+dependencies {
+  	minecraft "com.mojang:minecraft:${project.minecraft_version}"
+	mappings "net.fabricmc:yarn:${project.yarn_mappings}"
+	modCompile "net.fabricmc:fabric-loader:${project.loader_version}"
+	modCompile "net.fabricmc:fabric:${project.fabric_version}"
+
+    rootProject.subprojects.each { p -> compile project(":" + p.getName()) }
+}
